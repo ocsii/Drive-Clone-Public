@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+
+* {
+  margin: 0;
+  font-family: 'Google Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Google Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: rgb(248, 250, 253);
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 300px auto; /* 300 auto 50 */
+}
