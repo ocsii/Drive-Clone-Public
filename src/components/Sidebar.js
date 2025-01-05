@@ -1,4 +1,3 @@
-import { MobileScreenShare as MobileScreenShareIcon } from "@mui/icons-material";
 import { Devices as DevicesIcon } from "@mui/icons-material";
 import { PeopleAltOutlined as PeopleAltOutlinedIcon } from "@mui/icons-material";
 import { QueryBuilderOutlined as QueryBuilderOutlinedIcon } from "@mui/icons-material";
@@ -8,17 +7,14 @@ import { CloudQueue as CloudQueueIcon } from "@mui/icons-material";
 import { HomeRounded as HomeIcon } from "@mui/icons-material";
 import { ReportOutlined as ReportOutlinedIcon } from "@mui/icons-material";
 import { Add as PlusIcon } from "@mui/icons-material";
+import { Modal } from '@mui/material';
 
 import styled from "styled-components";
-import { Modal } from '@mui/material';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-
-import { storage, db, serverTimestamp } from '../firebase';  // Import from your firebase.js
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; // Import necessary functions
-import { doc, setDoc } from 'firebase/firestore'; // Import necessary functions
-
-
+import { storage, db, serverTimestamp } from '../firebase';  // 
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; 
+import { doc, setDoc } from 'firebase/firestore'; 
 
 
 
@@ -140,6 +136,12 @@ const UploadingPara = styled.p`
     letter-spacing: 1px;
 `
 
+// ...existing code...
+
+
+
+
+
 
 const Sidebar = () => {
 
@@ -199,6 +201,10 @@ const handleUpload = async (e) => {
     setOpen(false);
   }
 };
+
+
+
+ 
 
     
     

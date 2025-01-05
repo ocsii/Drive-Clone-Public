@@ -3,12 +3,15 @@ import { List as ListIcon } from '@mui/icons-material';
 import { InfoOutlined as InfoOutlinedIcon } from '@mui/icons-material';
 import { InsertDriveFile as InsertDriveFileIcon } from '@mui/icons-material';
 import { ArrowDownward as ArrowDownwardIcon } from '@mui/icons-material';
+import { Delete as DeleteIcon } from '@mui/icons-material';
 
 import { useState, useEffect } from 'react';
-import { db } from '../firebase';
 
 import styled from 'styled-components';
-import { collection, onSnapshot } from 'firebase/firestore';
+
+import { deleteDoc, doc, collection, onSnapshot } from 'firebase/firestore';
+import { deleteObject, ref } from 'firebase/storage';
+import { storage, db } from '../firebase'; 
 
 const DataContainer = styled.div`
     flex: 1 1;
@@ -81,6 +84,44 @@ const DataListRow = styled.div`
     }
 `
 
+const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red; // Change color as needed
+
+  &:hover {
+    color: darkred; // Change color as needed
+  }
+`;
+
+
+const handleDelete = async (fileName) => {
+  if (!fileName) {
+    alert("No file selected for deletion!");
+    return;
+  }
+
+  const fileRef = ref(storage, `files/${fileName}`);
+
+  try {
+    await deleteObject(fileRef);
+    console.log("Deleted file from storage:", fileName);
+
+    await deleteDoc(doc(db, "myfiles", fileName));
+    console.log("Deleted file metadata from Firestore:", fileName);
+
+    alert("File deleted successfully!");
+  } catch (error) {
+    console.error("Error deleting file:", error);
+    alert(error);
+  }
+};
+
 
 const Data = ( {user} ) => {
 
@@ -144,6 +185,7 @@ const Data = ( {user} ) => {
                     <p><b>Owner</b></p>
                     <p><b>Last Modified</b></p>
                     <p><b>File Size</b></p>
+                    <p><b>Delete</b></p>
                 </DataListRow>
 
                 {files.map(file => (
@@ -154,6 +196,9 @@ const Data = ( {user} ) => {
                         <p>{user?.displayName || "Unknown Owner"}</p>
                         <p> {new Date(file.item.timestamp?.seconds*1000).toUTCString()} </p>
                         <p> {changesToMb(file.item.size)} </p>
+                        <DeleteButton onClick={() => handleDelete(file.item.filename)}>
+                            <DeleteIcon />
+                        </DeleteButton>
                     </DataListRow>
                 ))}
             </div>
