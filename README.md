@@ -12,7 +12,10 @@ Before running the project, you need to set up Firebase configuration:
 
    ```javascript  
    // src/firebase.js  
-   import { initializeApp } from "firebase/app";  
+   import { initializeApp } from "firebase/app";
+   import { getFirestore, serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp here
+   import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+   import { getStorage } from 'firebase/storage';
 
    const firebaseConfig = {  
        apiKey: "YOUR_API_KEY",  
@@ -23,8 +26,14 @@ Before running the project, you need to set up Firebase configuration:
        appId: "YOUR_APP_ID"  
    };  
 
-   const app = initializeApp(firebaseConfig);  
-   export default app;  
+   const app = initializeApp(firebaseConfig);
+
+   const db = getFirestore(app);
+   const auth = getAuth(app);
+   const provider = new GoogleAuthProvider();
+   const storage = getStorage(app);
+   
+   export { auth, provider, storage, db, serverTimestamp }; 
    ```  
 
    Replace the placeholder values (`YOUR_API_KEY`, etc.) with your actual Firebase project credentials.  
