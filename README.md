@@ -13,7 +13,7 @@ Before running the project, you need to set up Firebase configuration:
    ```javascript  
    // src/firebase.js  
    import { initializeApp } from "firebase/app";
-   import { getFirestore, serverTimestamp } from 'firebase/firestore'; // Import serverTimestamp here
+   import { getFirestore, serverTimestamp } from 'firebase/firestore'; 
    import { getAuth, GoogleAuthProvider } from 'firebase/auth';
    import { getStorage } from 'firebase/storage';
 
