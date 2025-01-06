@@ -2,12 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Search as SearchIcon } from "@mui/icons-material";
-import { FormatAlignCenter as FormatAlignCenterIcon } from "@mui/icons-material";
-import { HelpOutline as HelpOutlineIcon } from "@mui/icons-material";
-import { Settings as SettingsIcon } from "@mui/icons-material";
-import { Apps as AppsIcon } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import { Settings as SettingsIconMUI } from "@mui/icons-material";
 
 const HeaderContainer = styled.div`
   // HeaderContainer
@@ -81,17 +76,11 @@ const Header = ({ photoURL }) => {
       <HeaderSearch>
         <SearchIcon style={{ margin: "0px 10px 0px 0px" }} />
         <input type="text" placeholder="Search in Drive" />
-        {/* <FormatAlignCenterIcon /> */}
       </HeaderSearch>
 
       <IconsContainer>
-        {/* <span>
-            <HelpOutlineIcon />
-            <SettingsIcon />
-        </span> */}
 
         <span>
-          {/* <AppsIcon /> */}
           <Avatar src={photoURL} />
         </span>
       </IconsContainer>

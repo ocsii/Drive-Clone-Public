@@ -12,11 +12,9 @@ import { Modal } from '@mui/material';
 import styled from "styled-components";
 import { useState } from "react";
 
-import { storage, db, serverTimestamp } from '../firebase';  // 
+import { storage, db, serverTimestamp } from '../firebase';  
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; 
 import { doc, setDoc } from 'firebase/firestore'; 
-
-
 
 
 const SidebarContainer = styled.div`
@@ -136,13 +134,6 @@ const UploadingPara = styled.p`
     letter-spacing: 1px;
 `
 
-// ...existing code...
-
-
-
-
-
-
 const Sidebar = () => {
 
     const [open, setOpen] = useState(false);
@@ -152,7 +143,6 @@ const Sidebar = () => {
     const handleFile = e => {
         if (e.target.files[0]) setFile(e.target.files[0]);
     }
-
 
 
 const handleUpload = async (e) => {
@@ -183,14 +173,6 @@ const handleUpload = async (e) => {
         size: snapshot.metadata.size, // Use snapshot.metadata for file size
     });
 
-    // // Save the file metadata to Firestore
-    // await db.collection("myfiles").add({
-    //   timestamp: serverTimestamp(),
-    //   filename: file.name,
-    //   fileURL: url,
-    //   size: snapshot.metadata.size, // Use snapshot.metadata for file size
-    // });
-
     alert("File uploaded successfully!");
   } catch (error) {
     console.error("Error uploading file:", error);
@@ -200,13 +182,7 @@ const handleUpload = async (e) => {
     setFile(null);
     setOpen(false);
   }
-};
-
-
-
- 
-
-    
+};    
     
   return (
     <>
@@ -234,12 +210,8 @@ const handleUpload = async (e) => {
         <SidebarContainer>
             <SidebarButton>
                 <button onClick={() => setOpen(true)}>
-
                     <PlusIcon />
                     <span> New </span>
-    {/* 
-                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2236%22 height=%2236%22 viewBox=%220 0 36 36%22%3E%3Cpath fill=%22%2334A853%22 d=%22M16 16v14h4V20z%22/%3E%3Cpath fill=%22%234285F4%22 d=%22M30 16H20l-4 4h14z%22/%3E%3Cpath fill=%22%23FBBC05%22 d=%22M6 16v4h10l4-4z%22/%3E%3Cpath fill=%22%23EA4335%22 d=%22M20 16V6h-4v14z%22/%3E%3Cpath fill=%22none%22 d=%22M0 0h36v36H0z%22/%3E%3C/svg%3E"/> */}
-                    {/* <span>New</span> */}
                 </button>
             </SidebarButton>
 
@@ -260,8 +232,6 @@ const handleUpload = async (e) => {
             <br/>
 
             <SidebarOptions>
-
-
                 <SidebarOption class="option">
                     <PeopleAltOutlinedIcon /><span>Shared with me</span>
                 </SidebarOption>
@@ -273,15 +243,12 @@ const handleUpload = async (e) => {
                 <SidebarOption class="option">
                     <StarBorderOutlinedIcon /><span>Starred</span>
                 </SidebarOption>
-            
             </SidebarOptions>
 
 
             <br/>
 
             <SidebarOptions>
-
-            
                 <SidebarOption class="option">
                     <DeleteOutlineOutlinedIcon /><span>Trash</span>
                 </SidebarOption>
@@ -301,7 +268,6 @@ const handleUpload = async (e) => {
                 </div>
 
             </SidebarOptions>
-
         </SidebarContainer>
 
     </>

@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 import Data from "./components/Data";
 
 import { auth, provider } from "./firebase";
-import { signInWithPopup, getAuth, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import styled from 'styled-components';
 import { useState } from "react";
 
@@ -49,8 +49,6 @@ function App() {
             alert(error.message);
         });
 };
-
-
 
   return (
     <>

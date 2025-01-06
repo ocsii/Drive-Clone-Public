@@ -97,7 +97,7 @@ const DeleteButton = styled.button`
   &:hover {
     color: darkred; // Change color as needed
   }
-`;
+`
 
 
 const handleDelete = async (fileName) => {
@@ -205,8 +205,6 @@ const Data = ( {user} ) => {
 
         </div>
         
-
-
     </DataContainer>
   )
 }
